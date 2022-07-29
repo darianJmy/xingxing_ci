@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import LoginView from '../components/LoginView'
 import HomeView from '../components/HomeView'
+import Upload from '../components/Upload/UploadView'
 
 const routes = [
   {
@@ -13,7 +14,10 @@ const routes = [
   },
   {
     path: '/home',
-    component: HomeView
+    component: HomeView,
+    children: [
+      { path: '/upload', component: Upload }
+    ]
   }
 ]
 

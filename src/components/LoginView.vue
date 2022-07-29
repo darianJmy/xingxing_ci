@@ -17,15 +17,15 @@
         ref="loginFormRef"
         v-on:keyup.enter="login">
             <!-- 用户名 -->
-            <el-form-item label="用户名:" prop="username">
+            <el-form-item label="用户名:" prop="mg_name">
               <el-input
-              v-model="loginForm.username"
+              v-model="loginForm.mg_name"
                 placeholder="请输入您的用户名"/>
             </el-form-item>
             <!-- 密码 -->
-            <el-form-item label="密码:" prop="password">
+            <el-form-item label="密码:" prop="mg_pwd">
               <el-input
-                v-model="loginForm.password"
+                v-model="loginForm.mg_pwd"
                 type="password"
                 placeholder="请输入您的密码"
               ></el-input>
@@ -49,11 +49,11 @@ export default {
   data () {
     return {
       loginForm: {
-        username: 'admin',
-        password: '123456'
+        mg_name: 'admin',
+        mg_pwd: '123456'
       },
       loginFormRules: {
-        username: [
+        mg_name: [
           {
             required: true,
             message: 'Please input Activity name',
@@ -66,7 +66,7 @@ export default {
             trigger: 'blur'
           }
         ],
-        password: [
+        mg_pwd: [
           {
             required: true,
             message: 'Please input Activity name',
@@ -97,12 +97,12 @@ export default {
             'login',
             this.loginForm
           )
+          console.log(res)
           // 判断 post 请求返回值
-          if (res.meta.status !== 200) {
+          if (res.status !== 200) {
             this.$message.error('登录失败')
           } else {
             this.$message.success('登录成功')
-            window.sessionStorage.setItem('token', res.data.token)
             this.$router.push('/home')
           }
         }

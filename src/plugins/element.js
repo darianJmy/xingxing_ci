@@ -10,7 +10,12 @@ import {
   ElMain,
   ElMenu,
   ElSubmenu,
-  ElMenuItem
+  ElMenuItem,
+  ElMessage,
+  ElBreadcrumb,
+  ElBreadcrumbItem,
+  ElCard,
+  ElUpload
 } from 'element-plus'
 
 export default (app) => {
@@ -26,4 +31,9 @@ export default (app) => {
   app.use(ElMenu)
   app.use(ElSubmenu)
   app.use(ElMenuItem)
+  app.use(ElMessage)
+  app.use(ElBreadcrumb)
+  app.use(ElBreadcrumbItem)
+  app.use(ElCard)
+  app.use(ElUpload)
 }

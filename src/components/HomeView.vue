@@ -26,28 +26,10 @@
           :default-active="activePath"
         >
           <!-- 一级菜单 -->
-          <el-submenu
-            :index="item.id + ''"
-            v-for="item in menulist"
-            :key="item.id"
-          >
-            <!-- 菜单模板 -->
-            <template #title>
-              <!-- 菜单文本 -->
-              <i :class="iconsList[item.id]"></i>
-              <span>{{ item.authName }}</span>
-            </template>
-            <!-- 二级菜单 -->
-            <el-menu-item
-              :index="'/' + subItem.path"
-              v-for="subItem in item.children"
-              :key="subItem.id"
-              @click="saveNavState('/' + subItem.path)"
-            >
-              <i class="el-icon-menu"></i>
-              <span>{{ subItem.authName }}</span>
-            </el-menu-item>
-          </el-submenu>
+          <el-menu-item index="/upload">
+            <i class="el-icon-menu"></i>
+            <span>上传文件</span>
+          </el-menu-item>
         </el-menu>
       </el-aside>
       <el-main>
@@ -74,10 +56,6 @@ export default {
       isCollapse: false,
       activePath: ''
     }
-  },
-  created () {
-    this.getMenuList()
-    this.activePath = window.sessionStorage.getItem('activePath')
   },
   methods: {
     // 重置按钮的重置函数
