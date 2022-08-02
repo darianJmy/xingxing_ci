@@ -8,7 +8,7 @@
     <el-upload
       class="upload-demo"
       :mode="upload"
-      action="http://127.0.0.1:8081/apis/v1/upload"
+      action="http://127.0.0.1:8081/api/v1/upload"
       multiple
       :on-preview="handlePreview" :on-remove="handleRemove"  :headers="headersObj" :on-success="handleSuccess"
     >
