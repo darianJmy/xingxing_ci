@@ -7,7 +7,7 @@
         <img src="../assets/logo.d1460f28.png" str />
         <span>星星自动化运维</span>
       </div>
-      <el-button @click="loginout" type="info">退出</el-button>
+      <el-button @click="loginout" type="info" size="small">退出</el-button>
     </el-header>
     <!-- 头部一下页面容器 -->
     <el-container>
@@ -26,10 +26,24 @@
           :default-active="activePath"
         >
           <!-- 一级菜单 -->
-          <el-menu-item index="/upload">
-            <i class="el-icon-menu"></i>
-            <span>上传文件</span>
-          </el-menu-item>
+          <el-submenu index="1">
+            <template #title>
+              <span>文件管理</span>
+            </template>
+            <!-- 二级菜单 -->
+            <el-menu-item index="/upload">
+              <i class="el-icon-menu"></i>
+              <span>上传文件</span>
+            </el-menu-item>
+          </el-submenu>
+          <!-- 服务治理 -->
+          <el-submenu index="2">
+            <template #title>
+              <span>服务治理</span>
+            </template>
+            <el-menu-item index="/projectManage">项目管理</el-menu-item>
+            <el-menu-item index="/serviceManage">服务管理</el-menu-item>
+          </el-submenu>
         </el-menu>
       </el-aside>
       <el-main>
@@ -56,6 +70,9 @@ export default {
       isCollapse: false,
       activePath: ''
     }
+  },
+  created () {
+    this.activePath = window.sessionStorage.getItem('activePath')
   },
   methods: {
     // 重置按钮的重置函数
@@ -91,6 +108,7 @@ export default {
   background-color: #373d41;
   img {
     height: 60px;
+    padding: 20px;
   }
   display: flex;
   justify-content: space-between;

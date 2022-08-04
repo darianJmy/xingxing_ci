@@ -99,10 +99,10 @@ export default {
           )
           console.log(res)
           // 判断 post 请求返回值
-          if (res.Meta.status !== 200) {
+          if (res.meta.status !== 200) {
             this.$message.error('登录失败')
           } else {
-            window.sessionStorage.setItem('token', res.Data.token)
+            window.sessionStorage.setItem('token', res.data.token)
             this.$message.success('登录成功')
             this.$router.push('/home')
           }

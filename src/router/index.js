@@ -1,7 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import LoginView from '../components/LoginView'
 import HomeView from '../components/HomeView'
-import Upload from '../components/Upload/UploadView'
+import WelcomeView from '../components/WelcomeView'
+import UploadView from '../components/Upload/UploadView'
+import ServiceManage from '../components/ServiceGov/ServiceManageView'
+import ProjectManage from '../components/ServiceGov/ProjectManageView'
 
 const routes = [
   {
@@ -15,8 +18,12 @@ const routes = [
   {
     path: '/home',
     component: HomeView,
+    redirect: '/welcome',
     children: [
-      { path: '/upload', component: Upload }
+      { path: '/welcome', component: WelcomeView },
+      { path: '/upload', component: UploadView },
+      { path: '/serviceManage', component: ServiceManage },
+      { path: '/projectManage', component: ProjectManage }
     ]
   }
 ]
@@ -24,6 +31,19 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
+})
+
+router.beforeEach((to, from, next) => {
+  // to 将要访问的路径
+  // from 代表从哪个路径跳转而来
+  // next 是一个函数，表示放行
+  // next() 放行 next('/login') 强制跳转
+
+  if (to.path === '/login') return next()
+  // 获取token
+  const tokenStr = window.sessionStorage.getItem('token')
+  if (!tokenStr) return next('/login')
+  next()
 })
 
 export default router
