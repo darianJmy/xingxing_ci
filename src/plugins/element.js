@@ -15,7 +15,11 @@ import {
   ElBreadcrumb,
   ElBreadcrumbItem,
   ElCard,
-  ElUpload
+  ElUpload,
+  ElTable,
+  ElTableColumn,
+  ElPagination,
+  ElCol
 } from 'element-plus'
 
 export default (app) => {
@@ -36,4 +40,8 @@ export default (app) => {
   app.use(ElBreadcrumbItem)
   app.use(ElCard)
   app.use(ElUpload)
+  app.use(ElTable)
+  app.use(ElTableColumn)
+  app.use(ElPagination)
+  app.use(ElCol)
 }
