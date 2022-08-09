@@ -42,7 +42,11 @@
               <span>服务治理</span>
             </template>
             <el-menu-item index="/projectManage">项目管理</el-menu-item>
-            <el-menu-item index="/serviceManage">服务管理</el-menu-item>
+            <el-submenu index="/serviceManage">
+              <template #title>服务管理</template>
+                <el-menu-item index="/sbxSetting">sbx环境</el-menu-item>
+                <el-menu-item index="/sitSetting">sit环境</el-menu-item>
+            </el-submenu>
           </el-submenu>
         </el-menu>
       </el-aside>

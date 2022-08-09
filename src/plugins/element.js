@@ -19,7 +19,8 @@ import {
   ElTable,
   ElTableColumn,
   ElPagination,
-  ElCol
+  ElCol,
+  ElLoading
 } from 'element-plus'
 
 export default (app) => {
@@ -44,4 +45,5 @@ export default (app) => {
   app.use(ElTableColumn)
   app.use(ElPagination)
   app.use(ElCol)
+  app.use(ElLoading)
 }

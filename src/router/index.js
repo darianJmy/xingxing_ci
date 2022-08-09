@@ -5,6 +5,8 @@ import WelcomeView from '../components/WelcomeView'
 import UploadView from '../components/Upload/UploadView'
 import ServiceManage from '../components/ServiceGov/ServiceManageView'
 import ProjectManage from '../components/ServiceGov/ProjectManageView'
+import SitSettingView from '../components/ServiceGov/SitSettingView'
+import SbxSettingView from '../components/ServiceGov/SbxSettingView'
 
 const routes = [
   {
@@ -23,7 +25,9 @@ const routes = [
       { path: '/welcome', component: WelcomeView },
       { path: '/upload', component: UploadView },
       { path: '/serviceManage', component: ServiceManage },
-      { path: '/projectManage', component: ProjectManage }
+      { path: '/projectManage', component: ProjectManage },
+      { path: '/sitSetting', component: SitSettingView },
+      { path: '/sbxSetting', component: SbxSettingView }
     ]
   }
 ]

@@ -50,10 +50,10 @@
               width="180"
             />
             <el-table-column label="操作">
-              <row>
+              <el-row>
                 <el-button>查看日志</el-button>
                 <el-button>下载日志</el-button>
-              </row>
+              </el-row>
             </el-table-column>
           </el-table>
           <el-pagination
