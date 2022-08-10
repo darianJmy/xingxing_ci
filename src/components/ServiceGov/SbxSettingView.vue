@@ -38,7 +38,10 @@
               </el-input>
             </el-col>
           </el-row>
-          <el-table :data="tableData" border stripe style="width: 100%" @expand-change="this.getPodList">
+          <el-table :data="tableData" border stripe style="width: 100%"
+          :row-key="getRowKeys"
+          :expand-row-keys="expands"
+          @expand-change="this.getPodList">
             <el-table-column type="expand">
                     <el-table :data="podList"  v-loading="loading" border style="width: 100%">
                         <el-table-column prop="podName" label="名称" />
@@ -77,6 +80,7 @@ export default {
       podList: [],
       url: '',
       loading: '',
+      expands: [],
       socketServe: null
     }
   },
@@ -101,20 +105,30 @@ export default {
       if (res.status !== 100) return this.$message.error('获取服务列表失败')
       this.tableData = res.data.records
     },
-    async getPodList (scope) {
+    getRowKeys (row) {
+      return row.serviceId
+    },
+    async getPodList (row, expandedRows) {
       this.loading = true
-      this.podList = []
-      //   const { data: res } = await require('axios').get(`/podList/${pod.namespaceName}/${pod.projectName}-${pod.serviceName}-service`)
-      const { data: res } = await require('axios').get(`/sbxPodList/${scope.namespaceName}/${scope.projectName}-${scope.serviceName}`)
-      if (res.meta.status !== 200) return console.log(res)
-      console.log(res)
-      this.podList = res.data
-      this.loading = false
+      console.log(row, 'hello')
+      if (expandedRows.length) {
+        this.expands = []
+        if (row) {
+          this.expands.push(row.serviceId)
+          const { data: res } = await require('axios').get(`/sbxPodList/${row.namespaceName}/${row.fullServiceName}`)
+          if (res.meta.status !== 200) return console.log(res)
+          this.podList = res.data
+          this.loading = false
+        }
+      } else {
+        this.expands = []
+      }
     },
     getPodLogList (scope) {
       // window.location.href = `http://${scope.row.hostIp}:20080/${scope.row.namespaceName}/${scope.row.projectName}`
       this.url = `http://${scope.row.hostIp}:20080/${scope.row.namespaceName}/${scope.row.projectName}/${scope.row.ownerName}/${scope.row.podIp}/`
-      window.location.href = this.url
+      console.log(this.url)
+      window.open(this.url, '_blank')
     }
   }
 }
