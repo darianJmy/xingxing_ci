@@ -49,8 +49,8 @@
                         <el-table-column prop="podStatus" label="状态"/>
                         <el-table-column label="更多操作">
                         <template v-slot="scope">
-                             <el-button @click="getPodLogWebsocket()">查看日志</el-button>
-                            <el-button @click="getPodLogList(scope)">下载日志</el-button>
+                             <el-button size="small" @click="getPodLogWebsocket()">查看日志</el-button>
+                            <el-button size="small" @click="getPodLogList(scope)">下载日志</el-button>
                         </template>
                         </el-table-column>
                     </el-table>
