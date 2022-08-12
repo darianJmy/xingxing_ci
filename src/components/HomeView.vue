@@ -5,7 +5,7 @@
     <el-header>
       <div>
         <img src="../assets/logo.d1460f28.png" str />
-        <span>星星自动化运维</span>
+        <span>简单的自动化运维</span>
       </div>
       <el-button @click="loginout" type="info" size="small">退出</el-button>
     </el-header>
@@ -28,6 +28,7 @@
           <!-- 一级菜单 -->
           <el-submenu index="1">
             <template #title>
+              <i class="el-icon-wenjianguanli"></i>
               <span>文件管理</span>
             </template>
             <!-- 二级菜单 -->
@@ -39,10 +40,11 @@
           <!-- 服务治理 -->
           <el-submenu index="2">
             <template #title>
+              <i class="el-icon-huanjingguanli1"></i>
               <span>服务治理</span>
             </template>
             <el-menu-item index="/projectManage">项目管理</el-menu-item>
-            <el-submenu index="/serviceManage">
+            <el-submenu>
               <template #title>服务管理</template>
                 <el-menu-item index="/sbxSetting">sbx环境</el-menu-item>
                 <el-menu-item index="/sitSetting">sit环境</el-menu-item>
@@ -62,14 +64,6 @@
 export default {
   data () {
     return {
-      menulist: [],
-      iconsList: {
-        125: 'el-icon-user',
-        103: 'el-icon-conditions',
-        101: 'el-icon-cart-Empty',
-        102: 'el-icon-manage-order',
-        145: 'el-icon-tradingdata'
-      },
       // 是否折叠
       isCollapse: false,
       activePath: ''

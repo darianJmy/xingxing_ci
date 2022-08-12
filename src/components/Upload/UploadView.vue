@@ -6,11 +6,10 @@
       <el-breadcrumb-item>上传文件</el-breadcrumb-item>
     </el-breadcrumb>
     <el-upload
-      class="upload-demo"
       :mode="upload"
       action="http://127.0.0.1:8081/api/v1/upload"
       multiple
-      :on-preview="handlePreview" :on-remove="handleRemove"  :headers="headersObj" :on-success="handleSuccess"
+      :headers="headersObj"
     >
       <el-button type="primary">点击上传</el-button>
       <template #tip>
@@ -24,7 +23,10 @@
 export default {
   data () {
     return {
-      upload: []
+      upload: [],
+      headersObj: {
+        Authorization: window.sessionStorage.getItem('token')
+      }
     }
   }
 }

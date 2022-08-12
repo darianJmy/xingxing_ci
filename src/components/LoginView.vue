@@ -1,32 +1,38 @@
 <template>
   <!-- 登录容器 -->
   <div class="login_container">
+    <div class="title_box">
+      <img src="../assets/芯赛云logo.png" />
+    </div>
+    <div class="logo_box">
+      <img src="../assets/login-left.aa3b20f2.png"  width="800" height="700"/>
+    </div>
     <!-- 登录盒子 -->
     <div class="login_box">
-      <!-- 左侧图片盒子-->
-      <div class="avatar_box">
-        <img src="../assets/login-bg.3f7262b6.jpeg" alt />
-      </div>
       <!-- 登录表单盒子 -->
+      <div class="avatar_box">欢迎登录简单的运维平台</div>
       <div class="loginform_container">
         <div class="loginform_box">
-          <el-form class="login_form"
-        label-width="90px"
-        :model="loginForm"
-        :rules="loginFormRules"
-        ref="loginFormRef"
-        v-on:keyup.enter="login">
+          <el-form
+            :model="loginForm"
+            :rules="loginFormRules"
+            ref="loginFormRef"
+            v-on:keyup.enter="login"
+          >
             <!-- 用户名 -->
-            <el-form-item label="用户名:" prop="username">
+            <el-form-item prop="username">
               <el-input
-              v-model="loginForm.username"
-                placeholder="请输入您的用户名"/>
+                prefix-icon="el-icon-yonghu"
+                v-model="loginForm.username"
+                placeholder="请输入您的用户名"
+              />
             </el-form-item>
             <!-- 密码 -->
-            <el-form-item label="密码:" prop="password">
+            <el-form-item prop="password">
               <el-input
                 v-model="loginForm.password"
                 type="password"
+                prefix-icon="el-icon-password"
                 placeholder="请输入您的密码"
               ></el-input>
             </el-form-item>
@@ -116,65 +122,56 @@ export default {
 <style lang="less" scoped>
 // 登录容器区域
 .login_container {
-  background-color: #fff;
+  background-color: #e8f5ff;
   height: 100%;
+  width: 100%;
+  .title_box {
+    position: absolute;
+    top: 2%;
+    left: 2%;
+  }
+  .logo_box {
+    width: 100%;
+  }
   // 登录盒子区域
   .login_box {
     background-color: #fff;
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    width: 1000px;
-    height: 550px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-    overflow: hidden;
+    transform: translate(50%, -50%);
+    width: 400px;
+    height: 450px;
     border-radius: 1%;
     // 图片盒子区域
     .avatar_box {
       position: absolute;
-      top: 50%;
-      left: 50%;
+      font-size: large;
       width: 100%;
-      height: 100%;
-      transform: translate(-70%, -50%);
-      display: flex;
-      img {
-        width: 100%;
-        height: 100%;
-      }
+      height: 20%;
+      background-color: #fff;
+      box-sizing: border-box;
+      padding: 50px 0 0 90px;
     }
     // 登录表单容器
     .loginform_container {
       position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(25%, -50%);
+      width: 100%;
+      height: 80%;
+      top: 20%;
       background-color: #fff;
-      width: 40%;
-      height: 100%;
       // 登录表单盒子
       .loginform_box {
         position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
+        top: 10%;
         width: 100%;
         height: 50%;
         background-color: #fff;
-        .login_form {
-          width: 100%;
-          height: 30%;
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          padding: 0 30px;
-          box-sizing: border-box;
-          .login_btns {
-            display: flex;
-            justify-content: flex-end;
-          }
+        padding: 0 50px;
+        box-sizing: border-box;
+        .login_btns {
+          display: flex;
+          justify-content: flex-end;
         }
       }
     }
